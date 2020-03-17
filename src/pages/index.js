@@ -1,54 +1,84 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import ContainerWithHeader from "../components/containerWithHeader"
 
 export default ({data}) => {
-  const blogPosts = data.allKontentItemBlogPost.edges
-  const projects = data.allKontentItemProject.edges
-
+  const blogPosts = data.allKontentItemHome.edges[0].node.elements.featured_blog_posts.linked_items
+  const projects = data.allKontentItemHome.edges[0].node.elements.featured_projects.linked_items
+  console.log(blogPosts)
   return(
     <Layout>
-      <h1>Gatsby site using Kentico</h1>
-      <h2>Blog posts</h2>
-      {blogPosts.map(post => (
-        <h4>{post.node.system.name}</h4>
-      ))}
-      <br />
+      <ContainerWithHeader>
+        <h1>I am Daisy.</h1>
+        {data.allKontentItemHome.edges[0].node.elements.introduction.value}
+      </ContainerWithHeader>
 
-      <h2>Projects</h2>
-      {projects.map(project => (
-        <h4>{project.node.system.name}</h4>
-      ))}
+      <ContainerWithHeader>
+        <h1>Projects</h1>
+        {projects.map(project => (
+          <div key={project.system.id}>
+            <h2>{project.system.name}</h2>
+          </div>
+        ))}
+      </ContainerWithHeader>
+
+      <ContainerWithHeader>
+        <h1>Blog</h1>
+        {blogPosts.map(post => (
+          <div key={post.id}>
+            <h2>{post.system.name}</h2>
+            <img src={post.elements.featured_image.value[0].url} />
+          </div>
+        ))}
+      </ContainerWithHeader>
+
     </Layout>
   )
 }
 
 export const query = graphql`
 query MyQuery {
-  allKontentItemBlogPost {
+  allKontentItemHome {
     edges {
       node {
-        id
-        system {
-          name
-        }
-      }
-    }
-  }
-  allKontentItemProject {
-    edges {
-      node {
-        system {
-          name
-        }
         elements {
-          featured_image {
-            value {
-              url
+          introduction {
+            value
+          }
+          featured_blog_posts {
+            linked_items {
+              ... on KontentItemBlogPost {
+                id
+                system {
+                  name
+                  codename
+                }
+                elements {
+                  featured_image {
+                    value {
+                      url
+                    }
+                  }
+                }
+              }
             }
           }
-          description {
-            value
+          featured_projects {
+            linked_items {
+              system {
+                id
+              }
+              ... on KontentItemProject {
+                id
+                system {
+                  name
+                }
+                contentType {
+                  id
+                }
+              }
+            }
           }
         }
       }
