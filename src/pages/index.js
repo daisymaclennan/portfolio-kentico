@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
 export default ({data}) => {
   const blogPosts = data.allKontentItemBlogPost.edges
   const projects = data.allKontentItemProject.edges
 
   return(
-    <div>
+    <Layout>
       <h1>Gatsby site using Kentico</h1>
       <h2>Blog posts</h2>
       {blogPosts.map(post => (
@@ -18,7 +19,7 @@ export default ({data}) => {
       {projects.map(project => (
         <h4>{project.node.system.name}</h4>
       ))}
-    </div>
+    </Layout>
   )
 }
 

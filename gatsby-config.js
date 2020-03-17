@@ -17,6 +17,7 @@ module.exports = {
                   `default`
           ]
         }
-      }
+    },
+    `gatsby-plugin-styled-components`
   ]
 }
