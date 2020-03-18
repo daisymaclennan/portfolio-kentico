@@ -6,12 +6,14 @@ import ContainerWithHeader from "../components/containerWithHeader"
 export default ({data}) => {
   const blogPosts = data.allKontentItemHome.edges[0].node.elements.featured_blog_posts.linked_items
   const projects = data.allKontentItemHome.edges[0].node.elements.featured_projects.linked_items
-  console.log(blogPosts)
+
+  console.log("Projects:", projects)
+  console.log("Posts:", blogPosts)
   return(
     <Layout>
       <ContainerWithHeader>
         <h1>I am Daisy.</h1>
-        {data.allKontentItemHome.edges[0].node.elements.introduction.value}
+        <p>{data.allKontentItemHome.edges[0].node.elements.introduction.value}</p>
       </ContainerWithHeader>
 
       <ContainerWithHeader>
@@ -19,19 +21,27 @@ export default ({data}) => {
         {projects.map(project => (
           <div key={project.system.id}>
             <h2>{project.system.name}</h2>
+            <h4>{project.elements.time_period.value}</h4>
+            <p>{project.elements.description.value}</p>
+            <a href={project.elements.featured_image.value[0].url}>
+              <img src={project.elements.featured_image.value[0].url} alt={project.elements.featured_image.value[0].description}/>
+            </a>
           </div>
         ))}
       </ContainerWithHeader>
 
-      <ContainerWithHeader>
+      {<ContainerWithHeader>
         <h1>Blog</h1>
         {blogPosts.map(post => (
           <div key={post.id}>
             <h2>{post.system.name}</h2>
-            <img src={post.elements.featured_image.value[0].url} />
+            <h5>{post.system.lastModified}</h5>
+            <a href={post.elements.featured_image.value[0].url}>
+              <img src={post.elements.featured_image.value[0].url} alt={post.elements.featured_image.value[0].description}/>
+            </a>
           </div>
         ))}
-      </ContainerWithHeader>
+      </ContainerWithHeader>}
 
     </Layout>
   )
@@ -53,11 +63,13 @@ query MyQuery {
                 system {
                   name
                   codename
+                  lastModified(formatString: "DD/MM/YYYY")
                 }
                 elements {
                   featured_image {
                     value {
                       url
+                      description
                     }
                   }
                 }
@@ -76,6 +88,20 @@ query MyQuery {
                 }
                 contentType {
                   id
+                }
+                elements {
+                  featured_image {
+                    value {
+                      url
+                      description
+                    }
+                  }
+                  time_period {
+                    value
+                  }
+                  description {
+                    value
+                  }
                 }
               }
             }
