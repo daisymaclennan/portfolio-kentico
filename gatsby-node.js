@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `projects/${node.system.codename}`,
       component: path.resolve(`./src/components/project.js`),
-      context: { slug: `projects/${node.system.codename}` },
+      context: { slug: `${node.system.codename}` },
     })
   })
 
@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `posts/${node.system.codename}`,
       component: path.resolve(`./src/components/post.js`),
-      context: { slug: `posts/${node.system.codename}` },
+      context: { slug: `${node.system.codename}` },
     })
   })
 }
