@@ -1,7 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import PageContent from "../components/pageContent"
 import ContainerWithHeader from "../components/containerWithHeader"
+import Heading from "../components/heading"
+import ProjectCard from "../components/projectCard"
+import PostCard from "../components/postCard"
 
 export default ({data}) => {
   const blogPosts = data.allKontentItemHome.edges[0].node.elements.featured_blog_posts.linked_items
@@ -11,38 +15,37 @@ export default ({data}) => {
   console.log("Posts:", blogPosts)
   return(
     <Layout>
-      <ContainerWithHeader>
-        <h1>I am Daisy.</h1>
-        <p>{data.allKontentItemHome.edges[0].node.elements.introduction.value}</p>
-      </ContainerWithHeader>
+      <PageContent>
+        <ContainerWithHeader>
+          <Heading>I am <span style={{color: "#7616B2"}}>Daisy</span>.</Heading>
+          <p>{data.allKontentItemHome.edges[0].node.elements.introduction.value}</p>
+        </ContainerWithHeader>
 
-      <ContainerWithHeader>
-        <h1>Projects</h1>
-        {projects.map(project => (
-          <div key={project.system.id}>
-            <h2>{project.system.name}</h2>
-            <h4>{project.elements.time_period.value}</h4>
-            <p>{project.elements.description.value}</p>
-            <a href={project.elements.featured_image.value[0].url}>
-              <img src={project.elements.featured_image.value[0].url} alt={project.elements.featured_image.value[0].description}/>
-            </a>
-          </div>
-        ))}
-      </ContainerWithHeader>
+        <ContainerWithHeader css={`
+          @media screen and (min-width: 800px){
+            div:nth-child(even){
+              text-align: left;
+              margin-right: auto;
+            }
+            div:nth-child(odd){
+              text-align: right;
+              margin-left: auto;
+            }
+          }
+          `}>
+          <Heading>Projects</Heading>
+          {projects.map(project => (
+            <ProjectCard project={project} />
+          ))}
+        </ContainerWithHeader>
 
-      {<ContainerWithHeader>
-        <h1>Blog</h1>
-        {blogPosts.map(post => (
-          <div key={post.id}>
-            <h2>{post.system.name}</h2>
-            <h5>{post.system.lastModified}</h5>
-            <a href={post.elements.featured_image.value[0].url}>
-              <img src={post.elements.featured_image.value[0].url} alt={post.elements.featured_image.value[0].description}/>
-            </a>
-          </div>
-        ))}
-      </ContainerWithHeader>}
-
+        <ContainerWithHeader>
+          <Heading>Blog</Heading>
+          {blogPosts.map(post => (
+            <PostCard post={post} />
+          ))}
+        </ContainerWithHeader>
+      </PageContent>
     </Layout>
   )
 }
@@ -84,7 +87,8 @@ query MyQuery {
               ... on KontentItemProject {
                 id
                 system {
-                  name
+                  name,
+                  codename
                 }
                 contentType {
                   id

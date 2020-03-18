@@ -1,13 +1,14 @@
 import React from "react"
 import Layout from "./layout"
 import { graphql } from "gatsby"
+import Heading from "./heading"
 
 const PostTemplate = ({ data }) => {
   console.log(data)
   const post = data.kontentItemBlogPost
   return(
     <Layout>
-      <h1>{post.system.name}</h1>
+      <Heading>{post.system.name}</Heading>
       <div>
 
       </div>

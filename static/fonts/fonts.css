@@ -1,0 +1,19 @@
+@font-face{
+  font-family: "Galano Grotesque";
+  src: url("./GalanoGrotesque/GalanoGrotesque.otf");
+}
+
+@font-face{
+  font-family: "Galano Grotesque alt";
+  src: url("./GalanoGrotesque/GalanoGrotesqueAlt.otf");
+}
+
+@font-face{
+  font-family: "Silka";
+  src: url("./Silka/Silka-Regular.otf");
+}
+
+@font-face{
+  font-family: "Proxima Nova";
+  src: url("./ProximaNova/ProximaNova-SemiBold.otf");
+}

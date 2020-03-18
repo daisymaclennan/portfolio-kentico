@@ -11,6 +11,15 @@ module.exports = {
           ]
         }
     },
+    {
+       resolve: "gatsby-plugin-web-font-loader",
+          options: {
+            custom: {
+              families: ["Galano Grotesque", "Galano Grotesque alt", "Silka", "Proxima Nova"],
+              urls: ["/fonts/fonts.css"],
+            },
+        },
+    },
     `gatsby-plugin-styled-components`
   ]
 }

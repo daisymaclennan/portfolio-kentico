@@ -1,36 +1,38 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "./layout"
+import Heading from "./heading"
+import ArrowLink from "./arrowLink"
+import SubHeading from "./subHeading"
+import PageContent from "./pageContent"
+import PostCard from "./postCard"
 
 const ProjectTemplate = ({ data }) => {
   console.log(data)
   const project = data.kontentItemProject
   return(
     <Layout>
-      <h1>{project.system.name}</h1>
-      <h3>{project.elements.company.value}</h3>
-      <a href={project.elements.live_website_url.value}>
-        view website
-      </a>
-      <a href={project.elements.github_url.value}>
-        see me on GitHub
-      </a>
-      <div>
-        <h4>{project.elements.time_period.value}</h4>
-        <p>{project.elements.description.value}</p>
-      </div>
-      <div>
-        <h3>Related posts</h3>
-        {project.elements.related_posts.linked_items && (
-          project.elements.related_posts.linked_items.map(post => (
-            <div key={post.id}>
-              <img src={post.elements.featured_image.value[0].url} alt={post.elements.featured_image.value[0].description} />
-              <h3>{post.system.name}</h3>
-              <h5>{post.system.lastModified}</h5>
-            </div>
-          ))
-        )}
-      </div>
+      <Heading>{project.system.name}</Heading>
+      <PageContent>
+        <SubHeading>{project.elements.company.value}</SubHeading>
+        <ArrowLink text="view website" link={project.elements.live_website_url.value} />
+        <ArrowLink text="see me on GitHub" link={project.elements.github_url.value} />
+        <div>
+          <h4>{project.elements.time_period.value}</h4>
+          <p>{project.elements.description.value}</p>
+        </div>
+        <div>
+
+          {project.elements.related_posts.linked_items.length > 0 && (
+            <>
+              <SubHeading>Related posts</SubHeading>
+              {project.elements.related_posts.linked_items.map(post => (
+                <PostCard post={post} />
+              ))}
+            </>
+          )}
+        </div>
+        </PageContent>
     </Layout>
   )
 }
