@@ -14,15 +14,21 @@ const ProjectTemplate = ({ data }) => {
     <Layout>
       <Heading>{project.system.name}</Heading>
       <PageContent>
-        <SubHeading>{project.elements.company.value}</SubHeading>
-        <ArrowLink text="view website" link={project.elements.live_website_url.value} />
-        <ArrowLink text="see me on GitHub" link={project.elements.github_url.value} />
+        {project.elements.company.value && (
+          <SubHeading>{project.elements.company.value}</SubHeading>
+        )}
+        {project.elements.live_website_url.value && (
+          <ArrowLink text="view website" link={project.elements.live_website_url.value} />
+        )}
+        {project.elements.github_url.value && (
+          <ArrowLink text="see me on GitHub" link={project.elements.github_url.value} />
+        )}
         <div>
           <h4>{project.elements.time_period.value}</h4>
           <p>{project.elements.description.value}</p>
         </div>
-        <div>
 
+        <div>
           {project.elements.related_posts.linked_items.length > 0 && (
             <>
               <SubHeading>Related posts</SubHeading>
