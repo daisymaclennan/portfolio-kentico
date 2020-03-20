@@ -4,18 +4,21 @@ import ArrowLink from "./arrowLink"
 
 const ProjectCard = ({ className, project }) => (
   <div className={className} key={project.system.id}>
-    <a href={project.elements.featured_image.value[0].url}>
+    <a href={`projects/${project.system.codename}`}>
       <img src={project.elements.featured_image.value[0].url} alt={project.elements.featured_image.value[0].description}/>
+      <h3>{project.system.name}</h3>
+      <h4>{project.elements.time_period.value}</h4>
+      <p>{project.elements.description.value}</p>
+      <ArrowLink link={`projects/${project.system.codename}`} text="view project" />
     </a>
-    <h3>{project.system.name}</h3>
-    <h4>{project.elements.time_period.value}</h4>
-    <p>{project.elements.description.value}</p>
-    <ArrowLink link={`projects/${project.system.codename}`} text="view project" />
   </div>
 )
 
 const StyledProjectCard = styled(ProjectCard)`
-  color: #230138;
+  a{
+    color: #230138;
+    text-decoration: none;
+  }
   h3{
     font-family: "Galano Grotesque alt";
   }

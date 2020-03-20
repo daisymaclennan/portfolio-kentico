@@ -2,22 +2,24 @@ import React from "react"
 import styled from "styled-components"
 
 const PostCard = ({ className, post }) => (
-  <a className={className}>
-    <div>
+  <div className={className}>
+    <a href={`/posts/${post.system.codename}`}>
       <img src={post.elements.featured_image.value[0].url} alt={post.elements.featured_image.value[0].description} />
       <h3>{post.system.name}</h3>
       <h5>{post.system.lastModified}</h5>
-    </div>
-  </a>
+    </a>
+  </div>
 )
 
 const StyledPostCard = styled(PostCard)`
   display: block;
-  color: #FFFFFF;
+  position: relative;
   text-align: center;
-  div{
-    background-color: #230138;
-    padding: 25px;
+  background-color: #230138;
+  padding: 25px;
+  a{
+    color: #FFFFFF;
+    text-decoration: none;
   }
   h3{
     font-family: "Galano Grotesque";
@@ -27,19 +29,21 @@ const StyledPostCard = styled(PostCard)`
     font-family: "Silka";
     font-size: 14px;
   }
+  img{
+    object-fit: cover;
+  }
 
   @media screen and (min-width: 800px){
-    div{
-      padding: 25px;
+    padding: 25px;
+    img{
+      height: 15vw;
     }
   }
 
   @media screen and (max-width: 800px){
     margin-left: -20px;
     margin-right: -20px;
-    div{
-      padding: 20px;
-    }
+    padding: 20px;
   }
 
 `

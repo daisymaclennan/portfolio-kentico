@@ -20,10 +20,12 @@
     "@kentico/gatsby-source-kontent": "^4.4.0",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.45",
+    "gatsby-plugin-react-helmet": "^3.2.0",
     "gatsby-plugin-styled-components": "^3.1.21",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
     "styled-components": "^5.0.1",
     "typescript": "^3.8.3"
   },

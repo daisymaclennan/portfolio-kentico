@@ -6,6 +6,8 @@ import ArrowLink from "./arrowLink"
 import SubHeading from "./subHeading"
 import PageContent from "./pageContent"
 import PostCard from "./postCard"
+import PostGrid from "./postGrid"
+import LightContainer from "./lightContainer"
 
 const ProjectTemplate = ({ data }) => {
   console.log(data)
@@ -23,21 +25,22 @@ const ProjectTemplate = ({ data }) => {
         {project.elements.github_url.value && (
           <ArrowLink text="see me on GitHub" link={project.elements.github_url.value} />
         )}
-        <div>
-          <h4>{project.elements.time_period.value}</h4>
+        <LightContainer>
+          <h4 css={`text-align: right; opacity: 0.8;`}>{project.elements.time_period.value}</h4>
           <p>{project.elements.description.value}</p>
-        </div>
+        </LightContainer>
 
-        <div>
-          {project.elements.related_posts.linked_items.length > 0 && (
-            <>
-              <SubHeading>Related posts</SubHeading>
-              {project.elements.related_posts.linked_items.map(post => (
-                <PostCard post={post} />
-              ))}
-            </>
-          )}
-        </div>
+
+        {project.elements.related_posts.linked_items.length > 0 && (
+          <div>
+            <SubHeading>Related posts</SubHeading>
+              <PostGrid>
+                {project.elements.related_posts.linked_items.map(post => (
+                  <PostCard post={post} />
+                ))}
+              </PostGrid>
+          </div>
+        )}
         </PageContent>
     </Layout>
   )
@@ -84,6 +87,7 @@ query ProjectQuery($slug: String!) {
               system {
                 name
                 lastModified(formatString: "DD/MM/YYYY")
+                codename
               }
             }
           }

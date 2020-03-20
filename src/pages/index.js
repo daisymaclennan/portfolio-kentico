@@ -6,19 +6,25 @@ import ContainerWithHeader from "../components/containerWithHeader"
 import Heading from "../components/heading"
 import ProjectCard from "../components/projectCard"
 import PostCard from "../components/postCard"
+import PostGrid from "../components/postGrid"
 
 export default ({data}) => {
   const blogPosts = data.allKontentItemHome.edges[0].node.elements.featured_blog_posts.linked_items
   const projects = data.allKontentItemHome.edges[0].node.elements.featured_projects.linked_items
 
-  console.log("Projects:", projects)
-  console.log("Posts:", blogPosts)
   return(
     <Layout>
       <PageContent>
         <ContainerWithHeader>
           <Heading>I am <span style={{color: "#7616B2"}}>Daisy</span>.</Heading>
-          <p>{data.allKontentItemHome.edges[0].node.elements.introduction.value}</p>
+          <p css={`
+            width: 40%;
+            text-align: right;
+            margin-left: auto;
+            font-size: 36px;
+            `}>
+            {data.allKontentItemHome.edges[0].node.elements.introduction.value}
+          </p>
         </ContainerWithHeader>
 
         <ContainerWithHeader css={`
@@ -41,9 +47,11 @@ export default ({data}) => {
 
         <ContainerWithHeader>
           <Heading>Blog</Heading>
-          {blogPosts.map(post => (
-            <PostCard post={post} />
-          ))}
+          <PostGrid>
+            {blogPosts.map(post => (
+              <PostCard post={post} />
+            ))}
+          </PostGrid>
         </ContainerWithHeader>
       </PageContent>
     </Layout>

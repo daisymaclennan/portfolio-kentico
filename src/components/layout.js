@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: Arial;
     margin: 0;
+    color: #230138;
   }
   img{
     width: 100%;
