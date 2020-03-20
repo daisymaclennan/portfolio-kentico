@@ -2,6 +2,8 @@ import React from "react"
 import Layout from "./layout"
 import { graphql } from "gatsby"
 import Heading from "./heading"
+import PageContent from "./pageContent"
+import LightContainer from "./lightContainer"
 
 const PostTemplate = ({ data }) => {
   console.log(data)
@@ -9,9 +11,11 @@ const PostTemplate = ({ data }) => {
   return(
     <Layout>
       <Heading>{post.system.name}</Heading>
-      <div>
-
-      </div>
+      <PageContent>
+        <LightContainer>
+          {post.elements.content.value}
+        </LightContainer>
+      </PageContent>
     </Layout>
   )
 }
