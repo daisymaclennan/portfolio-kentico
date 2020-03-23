@@ -29,7 +29,7 @@ const ProjectTemplate = ({ data }) => {
         </div>
         <LightContainer>
           <h4 css={`text-align: right; opacity: 0.8;`}>{project.elements.time_period.value}</h4>
-          <p>{project.elements.description.value}</p>
+          <p>{project.elements.long_description.value}</p>
         </LightContainer>
 
 
@@ -57,6 +57,9 @@ query ProjectQuery($slug: String!) {
           value
         }
         description {
+          value
+        }
+        long_description{
           value
         }
         featured_image {
