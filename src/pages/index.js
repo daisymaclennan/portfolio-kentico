@@ -24,6 +24,7 @@ export default ({ data }) => {
               text-align: right;
               margin-left: auto;
               font-size: 36px;
+              margin-top: -30px;
             }
             `}>
             {data.allKontentItemHome.edges[0].node.elements.introduction.value}
@@ -44,6 +45,9 @@ export default ({ data }) => {
               text-align: right;
               margin-left: auto;
             }
+            div:first-of-type{
+              margin-top: 60px;
+            }
           }
           `}>
           <Heading>Projects</Heading>
@@ -54,7 +58,7 @@ export default ({ data }) => {
 
         <ContainerWithHeader>
           <Heading>Blog</Heading>
-          <PostGrid>
+          <PostGrid css={`margin-top: 60px;`}>
             {blogPosts.map(post => (
               <PostCard post={post} />
             ))}
