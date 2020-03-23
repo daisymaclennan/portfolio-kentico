@@ -6,11 +6,11 @@ const SubHeading = styled.h2`
   letter-spacing: 0.1em;
   color: #230138;
 
-  @media screen and (min-width: 800px){
+  @media screen and (min-width: 1000px){
     font-size: 48px;
   }
 
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     font-size: 36px;
   }
 `

@@ -33,14 +33,14 @@ const StyledPostCard = styled(PostCard)`
     object-fit: cover;
   }
 
-  @media screen and (min-width: 800px){
+  @media screen and (min-width: 1000px){
     padding: 25px;
     img{
       height: 15vw;
     }
   }
 
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     margin-left: -20px;
     margin-right: -20px;
     padding: 20px;

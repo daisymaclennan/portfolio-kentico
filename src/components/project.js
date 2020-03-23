@@ -16,15 +16,17 @@ const ProjectTemplate = ({ data }) => {
     <Layout>
       <Heading>{project.system.name}</Heading>
       <PageContent>
-        {project.elements.company.value && (
-          <SubHeading>{project.elements.company.value}</SubHeading>
-        )}
-        {project.elements.live_website_url.value && (
-          <ArrowLink text="view website" link={project.elements.live_website_url.value} />
-        )}
-        {project.elements.github_url.value && (
-          <ArrowLink text="see me on GitHub" link={project.elements.github_url.value} />
-        )}
+        <div css={`@media screen and (min-width: 800px){margin-bottom: 100px;}`}>
+          {project.elements.company.value && (
+            <SubHeading>{project.elements.company.value}</SubHeading>
+          )}
+          {project.elements.live_website_url.value && (
+            <ArrowLink text="view website" link={project.elements.live_website_url.value} />
+          )}
+          {project.elements.github_url.value && (
+            <ArrowLink text="see me on GitHub" link={project.elements.github_url.value} />
+          )}
+        </div>
         <LightContainer>
           <h4 css={`text-align: right; opacity: 0.8;`}>{project.elements.time_period.value}</h4>
           <p>{project.elements.description.value}</p>
@@ -33,7 +35,7 @@ const ProjectTemplate = ({ data }) => {
 
         {project.elements.related_posts.linked_items.length > 0 && (
           <div>
-            <SubHeading>Related posts</SubHeading>
+            <SubHeading css={`@media screen and (min-width: 800px){margin-top: 175px;}`}>Related posts</SubHeading>
               <PostGrid>
                 {project.elements.related_posts.linked_items.map(post => (
                   <PostCard post={post} />

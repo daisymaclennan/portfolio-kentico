@@ -26,15 +26,17 @@ const StyledProjectCard = styled(ProjectCard)`
     font-family: "Silka";
   }
 
-  @media screen and (min-width: 800px){
-    width: 85%;
-    margin-top: 100px;
+  @media screen and (min-width: 1000px){
+    width: 60%;
+    min-width: 425px;
+    margin-bottom: 100px;
     h3{
       font-size: 36px;
     }
   }
 
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
+    margin-bottom: 50px;
     h3{
       font-size: 24px;
     }

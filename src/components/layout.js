@@ -10,13 +10,13 @@ const GlobalStyle = createGlobalStyle`
   img{
     width: 100%;
   }
-  @media screen and (min-width: 800px){
+  @media screen and (min-width: 1000px){
     p{
       font-size: 26px;
       line-height: 40px;
     }
   }
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     p{
       font-size: 24px;
       line-height: 29px;

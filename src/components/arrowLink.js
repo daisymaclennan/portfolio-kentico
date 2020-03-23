@@ -18,7 +18,7 @@ const StyledArrowLink = styled(ArrowLink)`
   text-decoration: none;
   color: #230138;
 
-  @media screen and (min-width: 800px){
+  @media screen and (min-width: 1000px){
     font-size: 30px;
     margin-bottom: 15px;
     svg{
@@ -26,7 +26,7 @@ const StyledArrowLink = styled(ArrowLink)`
     }
   }
 
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1000px){
     font-size: 24px;
     svg{
       margin-left: 5px;

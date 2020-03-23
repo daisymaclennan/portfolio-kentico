@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
 const PostGrid = styled.div`
-  @media screen and (min-width: 800px){
+  @media screen and (min-width: 1000px){
     display: grid;
 
     grid-column-gap: 25px;
     grid-row-gap: 25px;
   }
 
-  @media screen and (min-width: 800px) and (max-width: 1200px){
+  @media screen and (min-width: 1000px) and (max-width: 1200px){
     grid-template-columns: 1fr 1fr;
   }
 

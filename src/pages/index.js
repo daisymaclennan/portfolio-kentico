@@ -7,8 +7,9 @@ import Heading from "../components/heading"
 import ProjectCard from "../components/projectCard"
 import PostCard from "../components/postCard"
 import PostGrid from "../components/postGrid"
+import Stats from "../components/stats"
 
-export default ({data}) => {
+export default ({ data }) => {
   const blogPosts = data.allKontentItemHome.edges[0].node.elements.featured_blog_posts.linked_items
   const projects = data.allKontentItemHome.edges[0].node.elements.featured_projects.linked_items
 
@@ -18,14 +19,20 @@ export default ({data}) => {
         <ContainerWithHeader>
           <Heading>I am <span style={{color: "#7616B2"}}>Daisy</span>.</Heading>
           <p css={`
-            width: 40%;
-            text-align: right;
-            margin-left: auto;
-            font-size: 36px;
+            @media screen and (min-width: 800px){
+              width: 40%;
+              text-align: right;
+              margin-left: auto;
+              font-size: 36px;
+            }
             `}>
             {data.allKontentItemHome.edges[0].node.elements.introduction.value}
           </p>
         </ContainerWithHeader>
+
+        {console.log("stats data:", data.allKontentItemStatistics.edges[0].node.elements.included_statistics.linked_items)}
+
+        {<Stats stats={data.allKontentItemStatistics.edges[0].node.elements.included_statistics.linked_items}/>}
 
         <ContainerWithHeader css={`
           @media screen and (min-width: 800px){
@@ -95,7 +102,7 @@ query MyQuery {
               ... on KontentItemProject {
                 id
                 system {
-                  name,
+                  name
                   codename
                 }
                 contentType {
@@ -112,6 +119,29 @@ query MyQuery {
                     value
                   }
                   description {
+                    value
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  allKontentItemStatistics {
+    edges {
+      node {
+        elements {
+          included_statistics {
+            linked_items {
+              ... on KontentItemStatistic {
+                id
+                elements {
+                  number {
+                    value
+                  }
+                  text {
                     value
                   }
                 }
