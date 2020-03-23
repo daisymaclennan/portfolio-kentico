@@ -1,6 +1,11 @@
 import styled from "styled-components"
 
 const PostGrid = styled.div`
+  @media screen and (max-width: 1000px){
+    div{
+      margin-bottom: 40px; 
+    }
+  }
   @media screen and (min-width: 1000px){
     display: grid;
 
