@@ -19,7 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@kentico/gatsby-source-kontent": "^4.4.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "gatsby": "^2.19.45",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-react-helmet": "^3.2.0",
     "gatsby-plugin-styled-components": "^3.1.21",
     "gatsby-plugin-web-font-loader": "^1.0.4",
